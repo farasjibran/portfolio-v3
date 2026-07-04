@@ -1,0 +1,38 @@
+[
+  {
+    "company": "Informatika Media Pratama",
+    "role": "Software Engineer",
+    "period": "Oct 2021 – Present",
+    "current": true,
+    "location": "Jakarta",
+    "highlights": [
+      "Lead full-stack development on 6+ production systems for KEMENAG and KEMENKES",
+      "Architected cross-platform super-app (React Native + Django + Laravel) replacing 10+ legacy tools",
+      "Engineered and maintained robust, scalable, and responsive user interfaces for web applications using modern technologies such as React.js, Redux, and TypeScript.",
+      "Optimized application performance by implementing efficient code, minimizing rendering times, and reducing load times, resulting in a smoother user experience."
+    ]
+  },
+  {
+    "company": "Informatika Media Pratama",
+    "role": "Lead Engineer",
+    "period": "Nov 2022 – Nov 2023",
+    "location": "Jakarta",
+    "highlights": [
+      "Led and mentored a team of engineers, guiding them in TypeScript best practices and API integration, enhancing team productivity and code quality.",
+      "Spearheaded development of scalable web and mobile applications using React, React Native, and TypeScript, ensuring high-quality, responsive user interfaces.",
+      "Optimized application performance by refactoring data-fetching hooks and navigation flows, reducing rendering times and improving user experience.",
+      "Implemented stricter coding standards."
+    ]
+  },
+  {
+    "company": "Rumah Coding Indonesia",
+    "role": "Freelance Trainer",
+    "period": "Feb 2021 – Jun 2022",
+    "location": "Jakarta",
+    "highlights": [
+      "Instructed and mentored young learners in foundational web development skills, covering HTML, CSS, and JavaScript, fostering their interest and abilities in coding.",
+      "Developed and delivered a comprehensive curriculum for React.js, enabling students to learn and apply modern front-end development frameworks.",
+      "Taught and guided students through the fundamentals of back-end development using the Laravel framework, broadening their understanding of full-stack development."
+    ]
+  }
+]

@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --grain-opacity: 0.04;
+  }
+  .dark {
+    --grain-opacity: 0.06;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  ::selection {
+    background-color: rgb(59 130 246 / 0.35);
+    color: inherit;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(163 163 163 / 0.3);
+    border-radius: 6px;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgb(82 82 82 / 0.4);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(59 130 246 / 0.6);
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-5xl px-6 sm:px-8;
+  }
+
+  .section {
+    @apply py-24 sm:py-32;
+  }
+
+  /* Subtle grain overlay fixed to viewport */
+  .grain::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: var(--grain-opacity);
+    mix-blend-mode: overlay;
+  }
+}
+
+@layer utilities {
+  /* Scroll-reveal initial state */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  [data-reveal-delay='1'].is-visible { transition-delay: 0.08s; }
+  [data-reveal-delay='2'].is-visible { transition-delay: 0.16s; }
+  [data-reveal-delay='3'].is-visible { transition-delay: 0.24s; }
+  [data-reveal-delay='4'].is-visible { transition-delay: 0.32s; }
+
+  /* Glow text used for hero title gradient */
+  .text-glow {
+    text-shadow:
+      0 0 24px rgb(59 130 246 / 0.25),
+      0 0 64px rgb(59 130 246 / 0.1);
+  }
+
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgb(59 130 246 / 0.5), rgb(147 51 234 / 0.3), transparent);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+}

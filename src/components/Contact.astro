@@ -1,0 +1,75 @@
+---
+import { personal } from '../data/site.json';
+import { Mail, Github, Linkedin, ArrowUpRight } from 'lucide-astro';
+---
+
+<section id="contact" class="section">
+  <div class="container-page">
+    <div
+      data-reveal
+      class="relative overflow-hidden rounded-2xl border border-neutral-200 bg-gradient-to-br from-white via-white to-accent-500/5 p-10 dark:border-neutral-800 dark:from-neutral-900/80 dark:via-neutral-900/50 dark:to-accent-500/10 sm:p-16"
+    >
+      <!-- Decorative blob -->
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent-500/20 blur-3xl"
+      >
+      </div>
+
+      <div class="relative">
+        <h2
+          class="font-mono text-xs uppercase tracking-wider text-accent-600 dark:text-accent-400"
+        >
+          Contact
+        </h2>
+        <h3
+          class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-4xl lg:text-5xl"
+        >
+          Let's build something<br />
+          <span
+            class="bg-gradient-to-r from-accent-500 to-purple-500 bg-clip-text text-transparent"
+          >
+            impactful.
+          </span>
+        </h3>
+        <p
+          class="mt-4 max-w-xl text-base text-neutral-600 dark:text-neutral-400 sm:text-lg"
+        >
+          Open to senior engineer and tech lead roles, especially in
+          edtech, govtech, or platform engineering.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href={`mailto:${personal.email}`}
+            class="group inline-flex items-center gap-2 rounded-md bg-accent-500 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-accent-500/30 transition-all hover:bg-accent-600"
+          >
+            <Mail class="h-4 w-4" />
+            {personal.email}
+            <ArrowUpRight
+              class="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
+          </a>
+          <a
+            href={personal.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-neutral-300 bg-white text-neutral-700 transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800"
+          >
+            <Github class="h-4 w-4" />
+          </a>
+          <a
+            href={personal.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-neutral-300 bg-white text-neutral-700 transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800"
+          >
+            <Linkedin class="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

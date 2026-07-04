@@ -1,0 +1,34 @@
+{
+  "languages": {
+    "title": "Languages",
+    "items": [
+      { "name": "TypeScript", "icon": "FileCode" },
+      { "name": "JavaScript", "icon": "FileCode" },
+      { "name": "Python", "icon": "FileCode" },
+      { "name": "PHP", "icon": "FileCode" },
+      { "name": "SQL", "icon": "Database" }
+    ]
+  },
+  "frameworks": {
+    "title": "Frameworks",
+    "items": [
+      { "name": "React", "icon": "Atom" },
+      { "name": "Next.js", "icon": "Triangle" },
+      { "name": "React Native", "icon": "Smartphone" },
+      { "name": "Django", "icon": "Server" },
+      { "name": "Laravel", "icon": "Server" },
+      { "name": "Redux", "icon": "Layers" },
+      { "name": "Node.js", "icon": "Hexagon" }
+    ]
+  },
+  "databases": {
+    "title": "Databases",
+    "items": [
+      { "name": "MySQL", "icon": "Database" },
+      { "name": "PostgreSQL", "icon": "Database" },
+      { "name": "MongoDB", "icon": "Database" },
+      { "name": "Redis", "icon": "Zap" },
+      { "name": "Firebase", "icon": "Flame" }
+    ]
+  }
+}

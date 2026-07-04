@@ -1,0 +1,48 @@
+---
+import skills from '../data/skills.json';
+import * as Icons from 'lucide-astro';
+---
+
+<section id="skills" class="section">
+  <div class="container-page">
+    <div data-reveal class="mb-16">
+      <h2
+        class="font-mono text-xs uppercase tracking-wider text-accent-600 dark:text-accent-400"
+      >
+        Skills
+      </h2>
+      <h3
+        class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-4xl"
+      >
+        What I work with
+      </h3>
+    </div>
+
+    <div class="grid gap-10 md:grid-cols-3">
+      {Object.values(skills).map((group, idx) => (
+        <div data-reveal data-reveal-delay={String(idx + 1)}>
+          <h4
+            class="mb-5 font-mono text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-500"
+          >
+            {group.title}
+          </h4>
+          <ul class="space-y-2">
+            {group.items.map((s) => {
+              const Icon = (Icons as any)[s.icon] ?? Icons.Code2;
+              return (
+                <li
+                  class="flex items-center gap-3 rounded-md border border-transparent px-3 py-2 transition-colors hover:border-neutral-200 hover:bg-white dark:hover:border-neutral-800 dark:hover:bg-neutral-900/50"
+                >
+                  <Icon class="h-4 w-4 text-accent-500" />
+                  <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">
+                    {s.name}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

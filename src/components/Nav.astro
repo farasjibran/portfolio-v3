@@ -1,0 +1,40 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const links = [
+  { href: '#projects', label: 'Work' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-40 backdrop-blur-md">
+  <div
+    class="border-b border-neutral-200/60 bg-white/70 dark:border-neutral-800/60 dark:bg-neutral-950/70"
+  >
+    <nav class="container-page flex h-14 items-center justify-between">
+      <a
+        href="#top"
+        class="font-mono text-sm font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+      >
+        farras<span class="text-accent-500">.</span>jibran
+      </a>
+      <div class="flex items-center gap-1 sm:gap-2">
+        <ul class="hidden items-center gap-1 sm:flex">
+          {links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                class="rounded-md px-3 py-1.5 text-sm text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-neutral-100"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <ThemeToggle />
+      </div>
+    </nav>
+  </div>
+</header>

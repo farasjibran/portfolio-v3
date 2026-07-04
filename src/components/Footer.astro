@@ -1,0 +1,16 @@
+---
+import { personal } from '../data/site.json';
+---
+
+<footer class="border-t border-neutral-200 py-10 dark:border-neutral-800">
+  <div
+    class="container-page flex flex-col items-center justify-between gap-4 sm:flex-row"
+  >
+    <p class="font-mono text-xs text-neutral-500 dark:text-neutral-500">
+      © {new Date().getFullYear()} {personal.name}. Built with Astro.
+    </p>
+    <p class="font-mono text-xs text-neutral-500 dark:text-neutral-500">
+      Jakarta, Indonesia · UTC+7
+    </p>
+  </div>
+</footer>

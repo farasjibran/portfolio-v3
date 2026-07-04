@@ -1,0 +1,13 @@
+{
+  "personal": {
+    "name": "Muhammad Farras Jibran",
+    "shortName": "Farras Jibran",
+    "title": "Software Engineer",
+    "tagline": "Building scalable systems for Indonesia's government sector.",
+    "location": "Jakarta Timur, Indonesia",
+    "email": "farasjibran@gmail.com",
+    "github": "https://github.com/farrasjibran",
+    "linkedin": "https://www.linkedin.com/in/muhammadfarrasjibran",
+    "resume": "/resume.pdf"
+  }
+}
