@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import ResumeModal from './ResumeModal.astro';
 import { personal } from '../data/site.json';
 
 const links = [
@@ -36,10 +37,8 @@ const links = [
           <li>
             <a
               href={personal.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              download
-              class="rounded-md px-3 py-1.5 text-sm font-semibold text-accent-600 transition-colors hover:bg-accent-50 hover:text-accent-700 dark:text-accent-400 dark:hover:bg-accent-950/40 dark:hover:text-accent-300"
+              data-resume-trigger
+              class="cursor-pointer rounded-md px-3 py-1.5 text-sm font-semibold text-accent-600 transition-colors hover:bg-accent-50 hover:text-accent-700 dark:text-accent-400 dark:hover:bg-accent-950/40 dark:hover:text-accent-300"
             >
               Resume
             </a>
@@ -50,3 +49,4 @@ const links = [
     </nav>
   </div>
 </header>
+<ResumeModal />

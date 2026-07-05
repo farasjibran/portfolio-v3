@@ -1,0 +1,71 @@
+---
+import { personal } from '../data/site.json';
+import { Download, X, FileText } from 'lucide-astro';
+---
+
+<dialog
+  id="resume-modal"
+  aria-labelledby="resume-modal-title"
+  class="m-0 h-screen max-h-screen w-screen max-w-none border-0 bg-neutral-100 p-0 text-neutral-900 backdrop:bg-neutral-950/70 backdrop:backdrop-blur-sm sm:m-auto sm:h-[90vh] sm:max-h-[900px] sm:w-[min(960px,92vw)] sm:rounded-xl sm:shadow-2xl dark:bg-neutral-900 dark:text-neutral-100"
+>
+  <div class="flex h-full flex-col">
+    <header
+      class="flex shrink-0 items-center justify-between gap-2 border-b border-neutral-200 bg-white px-4 py-3 dark:border-neutral-800 dark:bg-neutral-950"
+    >
+      <div class="flex min-w-0 items-center gap-2">
+        <FileText class="h-4 w-4 shrink-0 text-accent-500" />
+        <h2 id="resume-modal-title" class="truncate text-sm font-semibold">
+          {personal.name} — Resume
+        </h2>
+      </div>
+      <div class="flex shrink-0 items-center gap-1">
+        <a
+          href={personal.resume}
+          download
+          class="inline-flex items-center gap-1.5 rounded-md bg-accent-500 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-accent-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500"
+        >
+          <Download class="h-3.5 w-3.5" />
+          Download
+        </a>
+        <button
+          type="button"
+          data-resume-close
+          aria-label="Close resume preview"
+          class="rounded-md p-1.5 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"
+        >
+          <X class="h-4 w-4" />
+        </button>
+      </div>
+    </header>
+
+    <div class="relative min-h-0 flex-1 bg-neutral-200 dark:bg-neutral-950">
+      <iframe
+        src={personal.resume}
+        title={`${personal.name} — Resume`}
+        class="absolute inset-0 h-full w-full border-0 bg-white"
+      ></iframe>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const dlg = document.getElementById('resume-modal') as HTMLDialogElement | null;
+  if (dlg) {
+    // Open from any [data-resume-trigger]
+    document.addEventListener('click', (e) => {
+      const target = e.target as Element | null;
+      if (!target) return;
+      const trigger = target.closest('[data-resume-trigger]');
+      if (!trigger) return;
+      e.preventDefault();
+      if (!dlg.open) dlg.showModal();
+    });
+
+    // Close button + backdrop click
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close();
+      const t = e.target as Element | null;
+      if (t?.closest('[data-resume-close]')) dlg.close();
+    });
+  }
+</script>
