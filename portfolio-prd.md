@@ -7,7 +7,7 @@
 **Hero:**
 - "Hello, I'm Muhammad Farras Jibran."
 - Software Engineer at IMP Studio, Jakarta Timur
-- Bachelor's in Information Systems — Indonesia Open University (GPA 3.11)
+- Bachelor's in Information Systems — Indonesia Open University (GPA 3.16)
 - Passionate about Software Development & AI
 - Tech stack badges: Next.js, React, React Native, Laravel, Django
 
@@ -25,7 +25,7 @@
 - Rumah Coding Indonesia — Freelance Trainer, Feb 2021 – Jun 2022
 
 **Education:**
-- Indonesia Open University — Bachelor's, Information Systems (Sep 2022 – Present), GPA 3.11
+- Indonesia Open University — Bachelor's, Information Systems (Sep 2022 – Present), GPA 3.16
 
 **Skills:**
 - Programming: TypeScript, JavaScript, Python, PHP, SQL, React Native
