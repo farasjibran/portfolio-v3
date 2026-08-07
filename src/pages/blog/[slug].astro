@@ -1,0 +1,188 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { Calendar, ArrowLeft, Tag } from 'lucide-astro';
+import blog from '../../data/blog.json';
+
+export function getStaticPaths() {
+  return blog.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
+
+// Split content by newlines and render as paragraphs
+const contentParagraphs = post.content.split('\n\n');
+---
+
+<Layout 
+  title={`${post.title} — Farras Jibran`} 
+  description={post.excerpt}
+>
+  <div class="grain">
+    <Nav />
+    <main id="main" class="pt-32 pb-20 sm:pt-40 sm:pb-32">
+      <article class="container-page max-w-3xl">
+        <!-- Back link -->
+        <div data-reveal class="mb-8">
+          <a
+            href="/blog"
+            class="group inline-flex items-center gap-2 text-sm text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+          >
+            <ArrowLeft class="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+            Back to blog
+          </a>
+        </div>
+
+        <!-- Article header -->
+        <header data-reveal class="mb-12">
+          <div class="mb-6 flex flex-wrap items-center gap-4 text-sm">
+            <div class="flex items-center gap-2 text-neutral-500 dark:text-neutral-400">
+              <Calendar class="h-4 w-4" />
+              <time datetime={post.date}>{formatDate(post.date)}</time>
+            </div>
+            <span class="text-neutral-300 dark:text-neutral-700">•</span>
+            <div class="flex items-center gap-2">
+              <Tag class="h-4 w-4 text-neutral-500 dark:text-neutral-400" />
+              <div class="flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <span
+                    class="rounded-md bg-neutral-100 px-2 py-1 font-mono text-xs text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <h1
+            class="mb-4 font-sans text-3xl font-bold leading-tight tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-4xl lg:text-5xl"
+          >
+            {post.title}
+          </h1>
+
+          <p class="text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
+            {post.excerpt}
+          </p>
+        </header>
+
+        <!-- Article content -->
+        <div
+          data-reveal
+          data-reveal-delay="1"
+          class="prose prose-neutral dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-p:leading-relaxed prose-a:text-accent-600 prose-a:no-underline hover:prose-a:text-accent-700 dark:prose-a:text-accent-400 hover:dark:prose-a:text-accent-300 prose-strong:font-semibold prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100 prose-code:rounded prose-code:bg-neutral-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:font-mono prose-code:text-sm prose-code:font-normal prose-code:text-neutral-800 prose-code:before:content-[''] prose-code:after:content-[''] dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 max-w-none"
+        >
+          {contentParagraphs.map((paragraph) => {
+            // Check if paragraph is a heading (starts with **)
+            if (paragraph.trim().startsWith('**') && paragraph.trim().endsWith('**')) {
+              const headingText = paragraph.trim().slice(2, -2);
+              return <h2>{headingText}</h2>;
+            }
+            
+            // Check if paragraph contains bullet points
+            if (paragraph.includes('\n-')) {
+              const lines = paragraph.split('\n');
+              const textBefore = lines.filter(line => !line.trim().startsWith('-'));
+              const bullets = lines.filter(line => line.trim().startsWith('-'));
+              
+              return (
+                <>
+                  {textBefore.length > 0 && textBefore[0].trim() && <p>{textBefore.join(' ')}</p>}
+                  {bullets.length > 0 && (
+                    <ul>
+                      {bullets.map((bullet) => (
+                        <li>{bullet.trim().slice(1).trim()}</li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              );
+            }
+            
+            // Regular paragraph
+            let html = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            // Auto-linkify URLs (match full URL then trim trailing punctuation but preserve it)
+            html = html.replace(/(https?:\/\/[^\s<>]+)/g, (match) => {
+              // Remove trailing punctuation that's not part of URL
+              const url = match.replace(/[\.,;:!?\)\]]+$/, '');
+              const trailingPunctuation = match.slice(url.length); // Preserve the punctuation
+              return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline">${url}</a>${trailingPunctuation}`;
+            });
+            return <p set:html={html} />;
+          })}
+        </div>
+
+        <!-- Footer navigation -->
+        <div
+          data-reveal
+          data-reveal-delay="2"
+          class="mt-16 border-t border-neutral-200 pt-8 dark:border-neutral-800"
+        >
+          <a
+            href="/blog"
+            class="group inline-flex items-center gap-2 text-sm font-semibold text-accent-600 transition-colors hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300"
+          >
+            <ArrowLeft class="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+            Back to all posts
+          </a>
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </div>
+</Layout>
+
+<style>
+  /* Enhanced prose styling for blog content */
+  .prose {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+
+  .prose h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+
+  .prose h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.375rem;
+    line-height: 1.4;
+  }
+
+  .prose p {
+    margin-bottom: 1.5rem;
+  }
+
+  .prose ul {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    list-style-type: disc;
+    padding-left: 1.75rem;
+  }
+
+  .prose li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  .prose strong {
+    font-weight: 600;
+  }
+</style>
