@@ -1,118 +1,129 @@
 ---
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-astro';
-import { personal } from '../data/site.json';
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-astro";
+import { personal } from "../data/site.json";
 ---
 
 <section id="top" class="relative pt-32 pb-20 sm:pt-40 sm:pb-32">
-  <!-- Background gradient blobs -->
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
-  >
+    <!-- Background gradient blobs -->
     <div
-      class="absolute -top-40 left-1/2 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-accent-500/20 blur-3xl dark:bg-accent-500/15"
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
+        <div
+            class="absolute -top-40 left-1/2 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-accent-500/20 blur-3xl dark:bg-accent-500/15"
+        >
+        </div>
+        <div
+            class="absolute top-40 right-0 h-[320px] w-[320px] rounded-full bg-purple-500/10 blur-3xl dark:bg-purple-500/10"
+        >
+        </div>
     </div>
-    <div
-      class="absolute top-40 right-0 h-[320px] w-[320px] rounded-full bg-purple-500/10 blur-3xl dark:bg-purple-500/10"
-    >
+
+    <div class="container-page">
+        <div data-reveal class="flex flex-col gap-8">
+            <!-- Status pill -->
+            <div class="flex items-center gap-3">
+                <span class="relative flex h-2.5 w-2.5" aria-hidden="true">
+                    <span
+                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
+                    ></span>
+                    <span
+                        class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"
+                    ></span>
+                </span>
+                <span
+                    class="font-mono text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400"
+                >
+                    Open to opportunities
+                </span>
+            </div>
+
+            <!-- Heading -->
+            <h1
+                class="font-sans text-4xl font-bold leading-[1.05] tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl lg:text-7xl"
+            >
+                Hi, I'm {personal.shortName.split(" ")[0]}.<br />
+                <span
+                    class="text-glow bg-gradient-to-r from-accent-500 via-accent-400 to-purple-500 bg-clip-text text-transparent"
+                >
+                    {personal.title}.
+                </span>
+            </h1>
+
+            <p
+                class="max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-400 sm:text-xl"
+            >
+                {personal.tagline} I architect full-stack system architectures ranging
+                from a React Native based super-app and a Next.js based Massive Open
+                Online Course platform to a Laravel backend for ministries serving
+                millions of Indonesians.
+            </p>
+
+            <!-- Tech stack badges -->
+            <ul class="flex flex-wrap gap-2" aria-label="Tech stack">
+                {
+                    [
+                        "Next.js",
+                        "React",
+                        "React Native",
+                        "Laravel",
+                        "Django",
+                    ].map((t) => (
+                        <li class="rounded-full border border-neutral-200 bg-white/60 px-3 py-1 font-mono text-xs text-neutral-700 backdrop-blur-sm dark:border-neutral-800 dark:bg-neutral-900/60 dark:text-neutral-300">
+                            {t}
+                        </li>
+                    ))
+                }
+            </ul>
+
+            <!-- CTAs -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+                <a
+                    href="#projects"
+                    class="group inline-flex items-center gap-2 rounded-md bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-accent-500/20 transition-all hover:bg-accent-600 hover:shadow-md hover:shadow-accent-500/30"
+                >
+                    View my work
+                    <ArrowRight
+                        class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                    />
+                </a>
+                <a
+                    href={`mailto:${personal.email}`}
+                    class="inline-flex items-center gap-2 rounded-md border border-neutral-300 bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800"
+                >
+                    <Mail class="h-4 w-4" />
+                    Get in touch
+                </a>
+            </div>
+
+            <!-- Social row -->
+            <div class="flex items-center gap-4 pt-2">
+                <a
+                    href={personal.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    class="text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+                >
+                    <Github class="h-5 w-5" />
+                </a>
+                <a
+                    href={personal.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    class="text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+                >
+                    <Linkedin class="h-5 w-5" />
+                </a>
+                <a
+                    href={`mailto:${personal.email}`}
+                    aria-label="Email"
+                    class="text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+                >
+                    <Mail class="h-5 w-5" />
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
-
-  <div class="container-page">
-    <div data-reveal class="flex flex-col gap-8">
-      <!-- Status pill -->
-      <div class="flex items-center gap-3">
-        <span
-          class="relative flex h-2.5 w-2.5"
-          aria-hidden="true"
-        >
-          <span
-            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
-          ></span>
-          <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
-        </span>
-        <span
-          class="font-mono text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400"
-        >
-          Open to opportunities
-        </span>
-      </div>
-
-      <!-- Heading -->
-      <h1
-        class="font-sans text-4xl font-bold leading-[1.05] tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl lg:text-7xl"
-      >
-        Hi, I'm {personal.shortName.split(' ')[0]}.<br />
-        <span class="text-glow bg-gradient-to-r from-accent-500 via-accent-400 to-purple-500 bg-clip-text text-transparent">
-          {personal.title}.
-        </span>
-      </h1>
-
-      <p
-        class="max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-400 sm:text-xl"
-      >
-        {personal.tagline} I architect full-stack systems — from React Native
-        super-apps to Laravel backends — for ministries serving millions of Indonesians.
-      </p>
-
-      <!-- Tech stack badges -->
-      <ul class="flex flex-wrap gap-2" aria-label="Tech stack">
-        {['Next.js', 'React', 'React Native', 'Laravel', 'Django'].map((t) => (
-          <li
-            class="rounded-full border border-neutral-200 bg-white/60 px-3 py-1 font-mono text-xs text-neutral-700 backdrop-blur-sm dark:border-neutral-800 dark:bg-neutral-900/60 dark:text-neutral-300"
-          >
-            {t}
-          </li>
-        ))}
-      </ul>
-
-      <!-- CTAs -->
-      <div class="flex flex-wrap items-center gap-3 pt-2">
-        <a
-          href="#projects"
-          class="group inline-flex items-center gap-2 rounded-md bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-accent-500/20 transition-all hover:bg-accent-600 hover:shadow-md hover:shadow-accent-500/30"
-        >
-          View my work
-          <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        </a>
-        <a
-          href={`mailto:${personal.email}`}
-          class="inline-flex items-center gap-2 rounded-md border border-neutral-300 bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800"
-        >
-          <Mail class="h-4 w-4" />
-          Get in touch
-        </a>
-      </div>
-
-      <!-- Social row -->
-      <div class="flex items-center gap-4 pt-2">
-        <a
-          href={personal.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-          class="text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-        >
-          <Github class="h-5 w-5" />
-        </a>
-        <a
-          href={personal.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-          class="text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-        >
-          <Linkedin class="h-5 w-5" />
-        </a>
-        <a
-          href={`mailto:${personal.email}`}
-          aria-label="Email"
-          class="text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-        >
-          <Mail class="h-5 w-5" />
-        </a>
-      </div>
-    </div>
-  </div>
 </section>
