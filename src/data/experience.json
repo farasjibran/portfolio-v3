@@ -6,22 +6,23 @@
     "current": true,
     "location": "Jakarta",
     "highlights": [
-      "Lead full-stack development on 6+ production systems for KEMENAG and KEMENKES",
-      "Architected cross-platform super-app (React Native + Django + Laravel) replacing 10+ legacy tools",
-      "Engineered and maintained robust, scalable, and responsive user interfaces for web applications using modern technologies such as React.js, Redux, and TypeScript.",
-      "Optimized application performance by implementing efficient code, minimizing rendering times, and reducing load times, resulting in a smoother user experience."
+      "Lead end-to-end delivery of national-scale web & mobile applications for government sector (KEMENAG, KEMENKES) using React.js, Next.js, React Native, and TypeScript, serving millions of users",
+      "Architected full-stack systems: modern frontend (React, Next.js), backend (Laravel, Node.js, Django), RESTful APIs, and scalable databases (SQL, MongoDB, Redis)",
+      "Delivered applications with proven impact: super-app with 1M+ downloads (256K national employees attendance), learning platform with 1.3M+ participants, scholarship system with 195K+ users",
+      "Led technical delivery meetings with stakeholders, translating business requirements into technical specifications and aligning architectural decisions across teams",
+      "Optimized application performance (rendering, load time, bundle size) and developed reusable UI components and design systems for code consistency and faster development cycles"
     ]
   },
   {
     "company": "Informatika Media Pratama",
-    "role": "Lead Engineer",
+    "role": "Leader of IT Engineer Division",
     "period": "Nov 2022 – Nov 2023",
     "location": "Jakarta",
     "highlights": [
-      "Led and mentored a team of engineers, guiding them in TypeScript best practices and API integration, enhancing team productivity and code quality.",
-      "Spearheaded development of scalable web and mobile applications using React, React Native, and TypeScript, ensuring high-quality, responsive user interfaces.",
-      "Optimized application performance by refactoring data-fetching hooks and navigation flows, reducing rendering times and improving user experience.",
-      "Implemented stricter coding standards."
+      "Led IT engineer division, managing cross-functional teams (Business Analysts, QA, UI/UX) and maintaining system stability aligned with business needs",
+      "Translated business requirements into clear technical solutions and established work priorities to meet deadlines",
+      "Monitored system performance and proposed improvements based on operational data; coordinated across teams for rapid issue resolution",
+      "Mentored and supported team members to strengthen technical capabilities, and prepared progress reports for management"
     ]
   },
   {
@@ -33,6 +34,15 @@
       "Instructed and mentored young learners in foundational web development skills, covering HTML, CSS, and JavaScript, fostering their interest and abilities in coding.",
       "Developed and delivered a comprehensive curriculum for React.js, enabling students to learn and apply modern front-end development frameworks.",
       "Taught and guided students through the fundamentals of back-end development using the Laravel framework, broadening their understanding of full-stack development."
+    ]
+  },
+  {
+    "company": "Xnetwork",
+    "role": "Software Engineer Intern",
+    "period": "Nov 2019 – May 2020",
+    "location": "Jakarta",
+    "highlights": [
+      "Developed company profile page and Content Management System using React.js & Laravel, building a solid foundation in front-end engineering."
     ]
   }
 ]
