@@ -1,5 +1,21 @@
 [
   {
+    "slug": "bentomux-v2",
+    "name": "Bentomux v2",
+    "year": "2026",
+    "role": "Creator & Full-Stack Developer",
+    "client": null,
+    "summary": "Native desktop workspace for running every coding agent in one calm window — with persistent terminals, live agent state, and approval handling.",
+    "problem": "AI coding workflows scatter projects, terminals, agent sessions, and approval prompts across separate windows, making long-running work easy to lose or miss.",
+    "solution": "Built a Tauri 2 desktop app with a Rust backend and vanilla TypeScript renderer. Bentomux keeps workspaces, recursive split panes, real PTYs, Git status, agent detection, approval overlays, and optional remote monitoring together.",
+    "impact": "Shipped a cross-platform native workspace that keeps agent sessions visible and recoverable, with 21 coding agents detected out of the box.",
+    "tags": ["Tauri 2", "Rust", "TypeScript", "PTY", "AI Agents"],
+    "accent": "from-cyan-500 to-blue-500",
+    "liveUrl": "https://bentomux.takora.dev/",
+    "repoUrl": "https://github.com/takora-dev/bentomux-v2",
+    "featured": true
+  },
+  {
     "slug": "pintar",
     "name": "PINTAR",
     "year": "2022",
